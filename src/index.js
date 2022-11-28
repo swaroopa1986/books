@@ -2,12 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { HelmetProvider } from 'react-helmet-async';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
+import { StoreProvider } from './Store';
+import AppContextProvider from './components/appContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+   <StoreProvider>
+      <HelmetProvider>
+        <PayPalScriptProvider deferLoading={true}>
+        <AppContextProvider>
+          <App />
+    </AppContextProvider>
+        </PayPalScriptProvider>
+      </HelmetProvider>
+    </StoreProvider>
   </React.StrictMode>
 );
 
