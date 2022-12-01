@@ -1,27 +1,90 @@
 import Axios from 'axios';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import { Helmet } from 'react-helmet-async';
 import { useContext, useEffect, useState } from 'react';
 import { Store } from '../Store';
 import { toast } from 'react-toastify';
 import { getError } from '../utils';
 
+
 export default function SignupScreen() {
   const navigate = useNavigate();
   const { search } = useLocation();
   const redirectInUrl = new URLSearchParams(search).get('redirect');
   const redirect = redirectInUrl ? redirectInUrl : '/';
-
+ 
   const [name, setName] = useState('');
+  const [nameError, setNameError] = useState('');
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-
+  const [error, setError] = useState('');
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
+ const nameRegExp  = /^[A-z][A-z0-9-_]{3,23}$/;
+ const emailRegExp = /[a-zA-Z0-9._%+-]+@[a-z0-9]+\.[a-z]{2,8}(.[a-z]{2,8}])/g;
+ const pwdRegExp = {
+  numCheck: /[0-9]/,
+  capsCheck:/[A-Z]/,
+  specialCharCheck:/[!@#$%^&*]/,
+  lengthCheck: 8,
+};
+  function handleNameInput(e){
+    e.preventDefault()
+    if(e.target.value === ""){
+      setNameError("name must be filled");
+    }else if(!new RegExp(nameRegExp).test(e.target.value)){
+      setNameError("name can contain only [a-z]")
+    }else if((e.target.value).length<3 || (e.target.value).length>23){
+      setNameError("name must be min 3 and max 23 characters")
+    }  else{
+      setName(e.target.value);
+      setNameError("")
+    }
+   
+}
+  function handleEmailInput(e){
+    e.preventDefault()
+    if(e.target.value === ""){
+      setEmailError("email must be filled");
+    }else if(!new RegExp(emailRegExp).test(e.target.value)){
+      setEmailError("email format is invalid")
+    } else{
+       setEmail(e.target.value)
+       setEmailError("")
+    }
+   
+}
+function handlePasswordInput(e){
+    e.preventDefault()
+    if(e.target.value === ""){
+      setPasswordError("password must be filled");
+    }else if(!new RegExp(pwdRegExp.numCheck).test(e.target.value)){
+      setPasswordError("password must contain a number")
+    }else if(!new RegExp(pwdRegExp.capsCheck).test(e.target.value)){
+      setPasswordError("password must contain a capital letter")
+    }else if(!new RegExp(pwdRegExp.specialCharCheck).test(e.target.value)){
+      setPasswordError("password must contain a special character")
+    }else if((e.target.value).length<pwdRegExp.lengthCheck){
+      setPasswordError("password must contain atleast 8 characters")
+    }else {
+      setPassword(e.target.value)
+      setPasswordError("")
+    }
+}
+function handleConfirmPasswordInput(e){
+  e.preventDefault()
+  if(password !== e.target.value){
+    setError("password don't match");
+  }else {
+    setConfirmPassword(e.target.value)
+    setError("")
+  }
+}
+
   const submitHandler = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -49,49 +112,61 @@ export default function SignupScreen() {
   }, [navigate, redirect, userInfo]);
 
   return (
-    <Container className="small-container">
+    <Container className="small-container App">
       <Helmet>
         <title>Sign Up</title>
       </Helmet>
-      <h1 className="my-3">Sign Up</h1>
-      <Form onSubmit={submitHandler}>
-        <Form.Group className="mb-3" controlId="name">
-          <Form.Label>Name</Form.Label>
-          <Form.Control onChange={(e) => setName(e.target.value)} required />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Form.Group className="mb-3" controlId="confirmPassword">
-            <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
-              type="password"
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
-          </Form.Group>
-        </Form.Group>
-        <div className="mb-3">
-          <Button type="submit">Sign Up</Button>
-        </div>
-        <div className="mb-3">
-          Already have an account?{' '}
-          <Link to={`/signin?redirect=${redirect}`}>Sign-In</Link>
-        </div>
-      </Form>
+      <section className="vh-100" style={{backgroundColor: '#eee'}}>
+  <div className="container-fluid h-custom">
+    <div className="row d-flex justify-content-center align-items-center h-100">
+      <div className="col-md-9 col-lg-6 col-xl-5">
+      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+      class="img-fluid" alt="Sample image"/>
+      </div>
+      <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form>
+          <div className="divider d-flex align-items-center my-4">
+            <h2 className="text-center fw-bold mx-3 mb-0">SignUp Form</h2>
+          </div>
+          <div className="form-outline mb-4">
+            <label className="form-label" for="form3Example3">User Name</label>
+            <input type="name" id="form3Example3" className="form-control form-control-md" onChange={handleNameInput} controlId="name" autoComplete='off'
+              placeholder="Enter name" />
+              <h4 style={{color:'red'}}> {nameError} </h4>    
+          </div>
+          <div className="form-outline mb-4">
+            <label className="form-label" for="form3Example3">Email address</label>
+            <input type="email" id="form3Example3" className="form-control form-control-lg" onChange={handleEmailInput} controlId="email" autoComplete='off'
+              placeholder="Enter email address" />
+              <h4 style={{color:'red'}}> {emailError} </h4>    
+          </div>
+          <div className="form-outline mb-3"> 
+          <label className="form-label" for="form3Example4">Password</label>
+            <input type="password" id="form3Example4" className="form-control form-control-lg" onChange={handlePasswordInput} controlId="password"
+              placeholder="Enter password" />  
+            <h4 style={{color:'red'}}> {passwordError} </h4>
+          </div>
+          <div className="form-outline mb-4">
+            <label className="form-label" for="form3Example3">Confirm Password</label>
+            <input type="password" id="form3Example3" className="form-control form-control-lg" onChange={handleConfirmPasswordInput} controlId="password" autoComplete='off'
+              placeholder="Enter password " />
+              <h4 style={{color:'red'}}> {error} </h4>    
+          </div>
+          <div className="text-center text-lg-start mt-4 pt-2">
+            <button type="button" className="btn btn-primary btn-lg" onClick={submitHandler}
+              style={{paddingLeft: '2.5rem', paddingRight: '2.5rem'}}>Register</button>
+            <div class="form-check d-flex justify-content-center mb-5">
+<label class="form-check-label" for="form2Example3">
+  Already Have an account {''} <Link to={`/signin?redirect=${redirect}`}>Sign-In</Link>
+</label>
+</div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
     </Container>
   );
 }
+   

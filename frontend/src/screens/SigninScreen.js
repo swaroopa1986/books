@@ -17,11 +17,25 @@ export default function SigninScreen() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+const [error, setError] = useState(false);
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
+
+   function handleEmailInput(e){
+      e.preventDefault()
+      setEmail(e.target.value)
+  }
+  function handlePasswordInput(e){
+      e.preventDefault()
+      setPassword(e.target.value)
+  }
+
   const submitHandler = async (e) => {
     e.preventDefault();
+    if(email.length === 0 || password.length === 0){
+      setError(true);
+      return;
+      }
     try {
       const { data } = await Axios.post('/api/users/signin', {
         email,
@@ -46,32 +60,43 @@ export default function SigninScreen() {
       <Helmet>
         <title>Sign In</title>
       </Helmet>
-      <h1 className="my-3">Sign In</h1>
-      <Form onSubmit={submitHandler}>
-        <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
-        <div className="mb-3">
-          <Button type="submit">Sign In</Button>
-        </div>
-        <div className="mb-3">
-          New customer?{' '}
-          <Link to={`/signup?redirect=${redirect}`}>Create your account</Link>
-        </div>
-      </Form>
-    </Container>
+      <section className="vh-100" style={{backgroundColor: '#eee'}}>
+  <div className="container-fluid h-custom">
+    <div className="row d-flex justify-content-center align-items-center h-100">
+      <div className="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          className="img-fluid" alt="Sample image"/>
+      </div>
+      <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form>
+          <div className="divider d-flex align-items-center my-4">
+            <h2 className="text-center fw-bold mx-3 mb-0">Login Form</h2>
+          </div>
+          <div className="form-outline mb-4">
+            <label className="form-label" for="form3Example3">Email address</label>
+            <input type="email" id="form3Example3" className="form-control form-control-lg" onChange={handleEmailInput} controlId="email"
+              placeholder="Enter email address" />
+              {error && email<=0? 
+              <label>Email can't be empty</label> : "" }
+          </div>
+          <div className="form-outline mb-3"> 
+          <label className="form-label" for="form3Example4">Password</label>
+            <input type="password" id="form3Example4" className="form-control form-control-lg" onChange={handlePasswordInput} controlId="password"
+              placeholder="Enter password" />
+              {error && password<=0? 
+              <label>password can't be empty</label> : "" }
+          </div>
+          <div className="text-center text-lg-start mt-4 pt-2">
+            <button type="button" className="btn btn-primary btn-lg" onClick={submitHandler}
+              style={{paddingLeft: '2.5rem', paddingRight: '2.5rem'}}>Login</button>
+            <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <Link to={`/signup?redirect=${redirect}`}
+                className="link-danger">Register</Link></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</Container>
   );
 }

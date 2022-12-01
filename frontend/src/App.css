@@ -39,31 +39,30 @@
 .about{
   padding: 3rem 0;
 }
-.about-content{
-  gap: 4rem;
+@media (max-width: 1232px) {
+  .products {
+    grid-template-columns: repeat(3, auto);
+  }
 }
-.about-title{
-  margin: 1rem 0;
+.form-check-label,
+.form-label{
+  padding-right: 150px;
+  font-weight: bold;
 }
-.about-img img{
-  max-width: 520px;
-}
-.about-text p{
-  margin: 1.8rem 0;
-  opacity: 0.8;
+@media (max-width: 950px) {
+  .products {
+    grid-template-columns: repeat(2, auto);
+  }
 }
 
-@media screen and (min-width: 800px){
-  .about-content{
-      grid-template-columns: repeat(2, 1fr);
-  }
-  .about-title{
-      margin-top: 0;
-  }
-  .about-img img{
-      margin-left: 0;
+@media (max-width: 630px) {
+  .products {
+    grid-template-columns: 1fr;
+    align-items: center;
+    padding-left: 90px;
   }
 }
+
 .bookheader{
   width: 100%;
   height: 500px;
@@ -120,6 +119,17 @@
   font-size: 15px;
   font-weight: bold;
 }
+@media (max-width: 768px) {
+  .search input{
+    outline: 0;
+    border: 0;
+    width: 100px;
+    height: 35px;
+    padding: 0 0.5rem;
+    font-size: 15px;
+    font-weight: bold;
+  } 
+}
 .search button{
   outline: none;
   border: none;
@@ -128,14 +138,32 @@
 }
 .bookcontainer{
   min-height: 80vh;
-  width: 75%;
+  width: 100%;
   margin: 0 auto;
   background: url("https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   margin-top: 25px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap:20px;
   box-sizing: border-box;
+}
+@media (max-width: 1232px) {
+  .bookcontainer {
+    grid-template-columns: repeat(4, auto);
+  }
+}
+
+@media (max-width: 950px) {
+  .bookcontainer {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+
+@media (max-width: 768px) {
+  .bookcontainer {
+    grid-template-columns: repeat(2, auto);
+    align-items: center;
+  }
 }
 .favourites{
   min-height: 200vh;
@@ -154,8 +182,8 @@
   text-align: center;
 }
 .card{
-  border-radius: 1rem;
-  height: 350px;
+  border-radius: 2rem;
+  height: 300px;
   padding: 0.5rem;
   margin-bottom: 10px;
   box-shadow: 0 5px 5px rgba(212,185,150,.5);
@@ -251,3 +279,4 @@
   text-align: justify;
   font-size: 13px;
 }
+
