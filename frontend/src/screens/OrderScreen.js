@@ -207,7 +207,7 @@ export default function OrderScreen() {
                 <strong>Name:</strong> {order.shippingAddress.fullName} <br />
                 <strong>Address: </strong> {order.shippingAddress.address},
                 {order.shippingAddress.city}, {order.shippingAddress.postalCode}
-                ,{order.shippingAddress.country}
+                ,{order.shippingAddress.country}{/*
                 &nbsp;
                 {order.shippingAddress.location &&
                   order.shippingAddress.location.lat && (
@@ -217,7 +217,7 @@ export default function OrderScreen() {
                     >
                       Show On Map
                     </a>
-                  )}
+                  )}*/}
               </Card.Text>
               {order.isDelivered ? (
                 <MessageBox variant="success">

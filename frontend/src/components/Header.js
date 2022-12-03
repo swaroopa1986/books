@@ -34,31 +34,41 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#">info@readme.com</Nav.Link>
-            <Nav.Link href="#">01-654789321</Nav.Link>
+            <Nav.Link className='media' href="#">info@readme.com</Nav.Link>
+            <Nav.Link className='media' href="#">01-654789321</Nav.Link>
           </Nav>
           <Nav className="justify-content-center justify-content-lg-end d-flex align-items-center">
-          <Nav.Link href="https://facebook.com">
+          <Nav.Link className='media' href="https://facebook.com">
                 <i className="fab fa-facebook-f"></i>
               </Nav.Link>
-              <Nav.Link href="https://instagram.com">
+              <Nav.Link className='media' href="https://instagram.com">
                 <i className="fab fa-instagram"></i>
               </Nav.Link>
-              <Nav.Link href="https://google.com">
+              <Nav.Link className='media' href="https://google.com">
                 <i className="fab fa-google"></i>
               </Nav.Link>
-              <Nav.Link href="https://twitter.com">
+              <Nav.Link className='media' href="https://twitter.com">
                 <i className="fab fa-twitter"></i>
               </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-      <Navbar bg="primary" variant="light" expand="lg">
+      <Navbar bg="info" variant="light" expand="lg">
             <Container>
               <LinkContainer to="/">
                 <Navbar.Brand>Read Me</Navbar.Brand>
               </LinkContainer>
+              <LinkContainer to="/cart">
+                    <Navbar.Brand>
+                    Cart
+                    {cart.cartItems.length > 0 && (
+                      <Badge pill bg="danger">
+                        {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                      </Badge>
+                    )}
+                    </Navbar.Brand>
+                  </LinkContainer>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
               <Nav  className="me-auto  w-100  justify-content-end">
@@ -66,20 +76,12 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
                     More Books
                   </Link>
                   </Nav>
-                  <Nav  className="me-auto  w-100  justify-content-end bold">
+                  <Nav  className="me-auto  w-100  justify-content-end">
                   <Link to="/about" className="nav-link">
                     About
                   </Link>
                   </Nav>
-                <Nav  className="me-auto  w-100  justify-content-end">
-                  <Link to="/cart" className="nav-link">
-                    Cart
-                    {cart.cartItems.length > 0 && (
-                      <Badge pill bg="danger">
-                        {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
-                      </Badge>
-                    )}
-                  </Link>
+                  <Nav  className="me-auto  w-100  justify-content-end">
                   {userInfo ? (
                     <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
                       <LinkContainer to="/profile">
@@ -105,6 +107,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
                       Sign In
                     </Link>
                   )}
+                  </Nav>
+                  <Nav  className="me-auto  w-100  justify-content-end">
                   {userInfo && userInfo.isAdmin && (
                     <NavDropdown title="Admin" id="admin-nav-dropdown">
                       <LinkContainer to="/admin/dashboard">

@@ -26,9 +26,9 @@ export default function BookList({ book }) {
                   <h2 className="title">{item.volumeInfo.title}</h2>
                 </div>
                 <div>
-                  <h2>{item.volumeInfo.authors}</h2>
+                  <h4>{item.volumeInfo.authors}</h4>
                 </div>
-                <div>
+                <div>  
                   {favouritesChecker(item.id) ? (
                     <button
                       onClick={() => removeFromFavourites(item.id)}

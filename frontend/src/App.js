@@ -42,11 +42,11 @@ function App() {
               <Route path='/about' element={<AboutScreen/>}/>
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen />} />
-              <Route path="/search" element={<SearchBox />} />
               <Route path="/signin" element={<SigninScreen />} />
               <Route path="/signup" element={<SignupScreen />} />
-              <Route path="/book" element={<BookList />} />
-              <Route path="/:id" element={<BookDetails />} />
+              <Route path="/search" element={ <ProtectedRoute><SearchBox /></ProtectedRoute>} />
+              <Route path="/book" element={<ProtectedRoute><BookList /></ProtectedRoute>} />
+              <Route path="/:id" element={<ProtectedRoute><BookDetails /></ProtectedRoute>} />
               <Route path="/favourites" element={
               <ProtectedRoute>
                 <FavouriteScreen />

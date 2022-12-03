@@ -44,25 +44,22 @@
     grid-template-columns: repeat(3, auto);
   }
 }
-.form-check-label,
-.form-label{
-  padding-right: 150px;
-  font-weight: bold;
-}
 @media (max-width: 950px) {
   .products {
     grid-template-columns: repeat(2, auto);
   }
 }
-
 @media (max-width: 630px) {
   .products {
     grid-template-columns: 1fr;
-    align-items: center;
     padding-left: 90px;
   }
 }
-
+.form-check-label,
+.form-label{
+  padding-right: 150px;
+  font-weight: bold;
+}
 .bookheader{
   width: 100%;
   height: 500px;
