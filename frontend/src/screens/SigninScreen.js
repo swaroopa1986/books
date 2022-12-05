@@ -1,8 +1,6 @@
 import Axios from 'axios';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import { Helmet } from 'react-helmet-async';
 import { useContext, useEffect, useState } from 'react';
 import { Store } from '../Store';
@@ -16,19 +14,49 @@ export default function SigninScreen() {
   const redirect = redirectInUrl ? redirectInUrl : '/';
 
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const emailRegExp = /\S+@\S+\.\S+/;
+  const pwdRegExp = {
+   numCheck: /[0-9]/,
+   capsCheck:/[A-Z]/,
+   specialCharCheck:/[!@#$%^&*]/,
+   lengthCheck: 8,
+ };
 const [error, setError] = useState(false);
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
 
-   function handleEmailInput(e){
-      e.preventDefault()
-      setEmail(e.target.value)
-  }
-  function handlePasswordInput(e){
-      e.preventDefault()
+  function handleEmailInput(e){
+    e.preventDefault()
+    if(e.target.value === ""){
+      setEmailError("email must be filled");
+    } else if(!new RegExp(emailRegExp).test(e.target.value)){
+      setEmailError("email format is not valid")
+    } else{
+       setEmail(e.target.value)
+       setEmailError("")
+    }
+   
+}
+function handlePasswordInput(e){
+    e.preventDefault()
+    if(e.target.value === ""){
+      setPasswordError("password must be filled");
+    }else if(!new RegExp(pwdRegExp.numCheck).test(e.target.value)){
+      setPasswordError("password must contain a number")
+    }else if(!new RegExp(pwdRegExp.capsCheck).test(e.target.value)){
+      setPasswordError("password must contain a capital letter")
+    }else if(!new RegExp(pwdRegExp.specialCharCheck).test(e.target.value)){
+      setPasswordError("password must contain a special character")
+    }else if((e.target.value).length<pwdRegExp.lengthCheck){
+      setPasswordError("password must contain atleast 8 characters")
+    }else {
       setPassword(e.target.value)
-  }
+      setPasswordError("")
+    }
+}
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -76,15 +104,17 @@ const [error, setError] = useState(false);
             <label className="form-label" for="form3Example3">Email address</label>
             <input type="email" id="form3Example3" className="form-control form-control-lg" onChange={handleEmailInput} controlId="email"
               placeholder="Enter email address" />
+              <h4 style={{color:'red'}}> {emailError} </h4>
               {error && email<=0? 
-              <label>Email can't be empty</label> : "" }
+              <label style={{color:'red'}}>Email can't be empty</label> : "" }
           </div>
           <div className="form-outline mb-3"> 
           <label className="form-label" for="form3Example4">Password</label>
             <input type="password" id="form3Example4" className="form-control form-control-lg" onChange={handlePasswordInput} controlId="password"
               placeholder="Enter password" />
+              <h4 style={{color:'red'}}> {passwordError} </h4>
               {error && password<=0? 
-              <label>password can't be empty</label> : "" }
+              <label style={{color:'red'}}>password can't be empty</label> : "" }
           </div>
           <div className="text-center text-lg-start mt-4 pt-2">
             <button type="button" className="btn btn-primary btn-lg" onClick={submitHandler}

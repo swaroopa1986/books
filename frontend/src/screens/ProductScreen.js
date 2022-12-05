@@ -82,6 +82,7 @@ function ProductScreen() {
       type: 'CART_ADD_ITEM',
       payload: { ...product, quantity },
     });
+    toast.success("Item added to cart");
     navigate('/cart');
   };
 

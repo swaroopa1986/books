@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Store } from '../Store';
 import { Helmet } from 'react-helmet-async';
+import { toast } from 'react-toastify';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MessageBox from '../components/MessageBox';
@@ -33,10 +34,14 @@ export default function CartScreen() {
   };
   const removeItemHandler = (item) => {
     ctxDispatch({ type: 'CART_REMOVE_ITEM', payload: item });
+    toast.success('Item removed successfully');
   };
 
   const checkoutHandler = () => {
     navigate('/signin?redirect=/shipping');
+  };
+  const continueHandler = () => {
+    navigate('/');
   };
 
   return (
@@ -120,6 +125,18 @@ export default function CartScreen() {
                       disabled={cartItems.length === 0}
                     >
                       Proceed to Checkout
+                    </Button>
+                  </div>
+                </ListGroup.Item>
+                
+                <ListGroup.Item>
+                  <div className="d-grid">
+                    <Button
+                      type="button"
+                      variant="dark"
+                      onClick={continueHandler}
+                    >
+                     Continue Shopping
                     </Button>
                   </div>
                 </ListGroup.Item>

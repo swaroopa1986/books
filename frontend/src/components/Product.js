@@ -1,5 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import Rating from './Rating';
 import axios from 'axios';
@@ -26,6 +27,7 @@ function Product(props) {
       type: 'CART_ADD_ITEM',
       payload: { ...item, quantity },
     });
+    toast.success("item added successfully");
   };
 
   return (
