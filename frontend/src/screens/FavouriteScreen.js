@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import "../App"
 import { useAppContext } from "../components/appContext";
@@ -12,6 +13,7 @@ export default function FavouriteScreen() {
   return (
     <>
     <div className='favourites'>
+    <Helmet><title>Favourites</title></Helmet>
     {favourites.length >0 ? (
         favourites.map((item) => {
         let thumbnail =

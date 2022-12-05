@@ -1,7 +1,5 @@
 import { createContext, useContext, useState } from "react";
 
-
-
 const AppContext = createContext(null);
 
 export const useAppContext = () => {
@@ -18,7 +16,6 @@ const AppContextProvider =({children}) => {
  const addToFavourites = (item) => {
     const oldFavourites = [...favourites];
     const newFavourites = oldFavourites.concat(item);
-
     setFavorites(newFavourites);
  }
 const removeFromFavourites = (id) => {

@@ -1,9 +1,11 @@
 import React from 'react'
+import { Helmet } from 'react-helmet-async';
 import Carousel from 'react-bootstrap/Carousel';
 
 export default function AboutScreen() {
   return (
     <>
+    <Helmet><title>About</title></Helmet>
     <Carousel>
       <Carousel.Item>
         <img

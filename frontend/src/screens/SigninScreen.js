@@ -103,7 +103,7 @@ function handlePasswordInput(e){
           <div className="form-outline mb-4">
             <label className="form-label" for="form3Example3">Email address</label>
             <input type="email" id="form3Example3" className="form-control form-control-lg" onChange={handleEmailInput} controlId="email"
-              placeholder="Enter email address" />
+              placeholder="Enter email address" autoComplete='off' />
               <h4 style={{color:'red'}}> {emailError} </h4>
               {error && email<=0? 
               <label style={{color:'red'}}>Email can't be empty</label> : "" }

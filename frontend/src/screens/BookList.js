@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from 'react-helmet-async';
 import BookDetails from "./BookDetails";
 import "../App.css";
 import { useAppContext } from "../components/appContext";
@@ -12,13 +13,14 @@ export default function BookList({ book }) {
   };
   return (
     <>
+    <Helmet>
+        <title>Books List</title>
+      </Helmet>
       {book.map((item) => {
         let thumbnail =
           item.volumeInfo.imageLinks &&
           item.volumeInfo.imageLinks.smallThumbnail;
         let amount = item.saleInfo.listPrice && item.saleInfo.listPrice.amount;
-        let ebook = item.accessInfo.pdf && item.accessInfo.pdf.isAvailable;
-        console.log(ebook);
         if (thumbnail !== undefined ) {
           return (
             <div className="book-list" key={item.id}>

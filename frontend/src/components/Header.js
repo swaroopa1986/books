@@ -38,16 +38,16 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
             <Nav.Link className='media' href="#">01-654789321</Nav.Link>
           </Nav>
           <Nav className="justify-content-center justify-content-lg-end d-flex align-items-center">
-          <Nav.Link className='media' href="https://facebook.com">
+          <Nav.Link className='media' href="https://facebook.com" target = "_blank">
                 <i className="fab fa-facebook-f"></i>
               </Nav.Link>
-              <Nav.Link className='media' href="https://instagram.com">
+              <Nav.Link className='media' href="https://instagram.com"target = "_blank">
                 <i className="fab fa-instagram"></i>
               </Nav.Link>
-              <Nav.Link className='media' href="https://google.com">
+              <Nav.Link className='media' href="https://google.com"target = "_blank">
                 <i className="fab fa-google"></i>
               </Nav.Link>
-              <Nav.Link className='media' href="https://twitter.com">
+              <Nav.Link className='media' href="https://twitter.com"target = "_blank">
                 <i className="fab fa-twitter"></i>
               </Nav.Link>
           </Nav>

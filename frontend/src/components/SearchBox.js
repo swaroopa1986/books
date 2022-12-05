@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import BookList from "../screens/BookList";
+import { Helmet } from "react-helmet-async";
 
 export default function SearchBox() {
   const [search, setSearch] = useState("");
@@ -31,6 +32,7 @@ export default function SearchBox() {
   return (
     <>
       <div className="bookheader">
+        <Helmet><title>Search</title></Helmet>
         <div className="row1">
           <h1 className="booktext">
             The more that you READ,
