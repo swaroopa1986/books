@@ -169,6 +169,9 @@
   text-align: center;
   justify-items: center;
 }
+.favImage{
+  float: left;
+}
 .book-list{
   border-radius: 1rem;
   height: 400px;

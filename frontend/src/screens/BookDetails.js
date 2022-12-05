@@ -17,7 +17,7 @@ export default function BookDetails(props) {
                             <h1>{props.item.volumeInfo.title}</h1>
                             <h3>{props.item.volumeInfo.authors}</h3>
                             <h4>{props.item.volumeInfo.publisher}<span>{props.item.volumeInfo.publishedDate}</span></h4><br/>
-                            <a href={props.item.volumeInfo.previewLink}><button>More</button></a>
+                            <a href={props.item.volumeInfo.previewLink}target="_blank"><button>More</button></a>
                         </div>
                     </div>
                     <h4 className="description">{props.item.volumeInfo.description}</h4>

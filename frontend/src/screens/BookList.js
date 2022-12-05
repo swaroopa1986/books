@@ -17,7 +17,9 @@ export default function BookList({ book }) {
           item.volumeInfo.imageLinks &&
           item.volumeInfo.imageLinks.smallThumbnail;
         let amount = item.saleInfo.listPrice && item.saleInfo.listPrice.amount;
-        if (thumbnail !== undefined) {
+        let ebook = item.accessInfo.pdf && item.accessInfo.pdf.isAvailable;
+        console.log(ebook);
+        if (thumbnail !== undefined ) {
           return (
             <div className="book-list" key={item.id}>
               <div className="bookcard">

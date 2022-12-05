@@ -1,12 +1,10 @@
 import React from 'react'
-import { Link , useNavigate} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "../App"
 import { useAppContext } from "../components/appContext";
 
 export default function FavouriteScreen() {
   const { favourites, addToFavourites, removeFromFavourites } = useAppContext();
-  console.log("my favourite books", favourites);
-  const navigate = useNavigate();
   const favouritesChecker = (id) => {
     const boolean = favourites.some((item) => item.id === id);
     return boolean;
@@ -19,12 +17,12 @@ export default function FavouriteScreen() {
         let thumbnail =
           item.volumeInfo.imageLinks &&
           item.volumeInfo.imageLinks.smallThumbnail;
-        let amount = item.saleInfo.listPrice && item.saleInfo.listPrice.amount;
+        let buylink = item.saleInfo.buyLink;
         if (thumbnail !== undefined) {
           return (
             <div className="book-list" key={item.id}>
-              <div className="bookcard">
-                <img src={thumbnail} alt={item.volumeInfo.title} onClick={() => navigate(`/${item.id}`)} />
+              <div className='favImage'>
+                <img src={thumbnail} alt={item.volumeInfo.title} />
                 <div className="bottom">
                   <h2 className="title">{item.volumeInfo.title}</h2>
                 </div>
@@ -48,6 +46,14 @@ export default function FavouriteScreen() {
               </div>
               <div>
                 <h6 className="favdescription">{item.volumeInfo.description}</h6>
+              </div>
+              <div> 
+                {buylink? (
+                  <a href={buylink } target="_blank"><button>Buy Link</button></a>
+                ) : (
+                 <h4> Not for Sale </h4> 
+                )
+                } 
               </div>
             </div>
           );
