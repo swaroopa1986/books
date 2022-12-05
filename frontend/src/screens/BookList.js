@@ -20,13 +20,13 @@ export default function BookList({ book }) {
         if (thumbnail !== undefined) {
           return (
             <div className="book-list" key={item.id}>
-              <div className="card">
+              <div className="bookcard">
                 <img src={thumbnail} alt={item.volumeInfo.title}  onClick={()=>{setShow(true); setItem(item)}}/>
                 <div className="bottom">
-                  <h2 className="title">{item.volumeInfo.title}</h2>
+                  <h3 className="title">{item.volumeInfo.title}</h3>
                 </div>
                 <div>
-                  <h4>{item.volumeInfo.authors}</h4>
+                  <h6>{item.volumeInfo.authors}</h6>
                 </div>
                 <div>  
                   {favouritesChecker(item.id) ? (
@@ -46,7 +46,7 @@ export default function BookList({ book }) {
                   )}
                 </div>
               <div> 
-                 <h4 className="amount">{amount ? '€'+amount : 'not for sale'}</h4>
+                 <h5 className="amount">{amount ? '€'+amount : 'not for sale'}</h5>
               </div>
               </div>
             <BookDetails show={show} item={bookItem} onClose={()=>setShow(false)}/>

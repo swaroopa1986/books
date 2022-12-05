@@ -23,7 +23,7 @@ export default function FavouriteScreen() {
         if (thumbnail !== undefined) {
           return (
             <div className="book-list" key={item.id}>
-              <div className="card">
+              <div className="bookcard">
                 <img src={thumbnail} alt={item.volumeInfo.title} onClick={() => navigate(`/${item.id}`)} />
                 <div className="bottom">
                   <h2 className="title">{item.volumeInfo.title}</h2>
@@ -47,7 +47,7 @@ export default function FavouriteScreen() {
                 </div>
               </div>
               <div>
-                <h4 className="favdescription">{item.volumeInfo.description}</h4>
+                <h6 className="favdescription">{item.volumeInfo.description}</h6>
               </div>
             </div>
           );
