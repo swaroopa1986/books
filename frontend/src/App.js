@@ -148,6 +148,7 @@ function App() {
         </main>
         <footer fixed = "bottom">
           <div className="text-center">All rights reserved</div>
+          <div> @COPY NCI</div>
         </footer>
       </div>
     </Router>
