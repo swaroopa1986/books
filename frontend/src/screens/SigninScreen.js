@@ -102,7 +102,9 @@ function handlePasswordInput(e){
           </div>
           <div className="form-outline mb-4">
             <label className="form-label" for="form3Example3">Email address</label>
-            <input type="email" id="form3Example3" className="form-control form-control-lg" onChange={handleEmailInput} controlId="email"
+            <input type="email" id="form3Example3" 
+            className="form-control form-control-lg" 
+            onChange={handleEmailInput} controlId="email"
               placeholder="Enter email address" autoComplete='off' />
               <h4 style={{color:'red'}}> {emailError} </h4>
               {error && email<=0? 
@@ -110,7 +112,9 @@ function handlePasswordInput(e){
           </div>
           <div className="form-outline mb-3"> 
           <label className="form-label" for="form3Example4">Password</label>
-            <input type="password" id="form3Example4" className="form-control form-control-lg" onChange={handlePasswordInput} controlId="password"
+            <input type="password" id="form3Example4" 
+            className="form-control form-control-lg" 
+            onChange={handlePasswordInput} controlId="password"
               placeholder="Enter password" />
               <h4 style={{color:'red'}}> {passwordError} </h4>
               {error && password<=0? 
@@ -119,7 +123,9 @@ function handlePasswordInput(e){
           <div className="text-center text-lg-start mt-4 pt-2">
             <button type="button" className="btn btn-primary btn-lg" onClick={submitHandler}
               style={{paddingLeft: '2.5rem', paddingRight: '2.5rem'}}>Login</button>
-            <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <Link to={`/signup?redirect=${redirect}`}
+            <p className="small fw-bold mt-2 pt-1 mb-0">
+              Don't have an account? 
+              <Link to={`/signup?redirect=${redirect}`}
                 className="link-danger">Register</Link></p>
           </div>
         </form>

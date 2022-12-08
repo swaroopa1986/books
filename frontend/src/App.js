@@ -22,12 +22,14 @@ import ProductEditScreen from './screens/ProductEditScreen';
 import OrderListScreen from './screens/OrderListScreen';
 import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen';
-import MapScreen from './screens/MapScreen';
+import Contact from './screens/Contact';
 import Header from './components/Header';
 import AboutScreen from './screens/AboutScreen';
 import BookList from './screens/BookList';
 import BookDetails from './screens/BookDetails';
 import FavouriteScreen from './screens/FavouriteScreen';
+import UserMessageScreen from './screens/UserMessageScreen';
+import NotFound from './screens/NotFound'
 
 function App() {
   return (
@@ -51,19 +53,12 @@ function App() {
               <ProtectedRoute>
                 <FavouriteScreen />
               </ProtectedRoute>} />
-              <Route
+              <Route path="/contact" element={<ProtectedRoute><Contact /></ProtectedRoute>} />
+             <Route
                 path="/profile"
                 element={
                   <ProtectedRoute>
                     <ProfileScreen />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/map"
-                element={
-                  <ProtectedRoute>
-                    <MapScreen />
                   </ProtectedRoute>
                 }
               />
@@ -138,7 +133,16 @@ function App() {
                   </AdminRoute>
                 }
               ></Route>
+              <Route
+                path="/admin/contacts"
+                element={
+                  <AdminRoute>
+                    <UserMessageScreen />
+                  </AdminRoute>
+                }
+              ></Route>
               <Route path="/" element={<HomeScreen />} />
+              <Route path="*" element={<NotFound/>} />
             </Routes>
           </Container>
         </main>

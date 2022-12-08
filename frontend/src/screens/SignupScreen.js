@@ -25,7 +25,7 @@ export default function SignupScreen() {
   const [message, setMessage] = useState('');
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
- const nameRegExp  = /^[A-z][A-z0-9-_]{3,23}$/;
+ const nameRegExp  = /^[A-z]{3,23}$/;
  const emailRegExp = /\S+@\S+\.\S+/;
  const pwdRegExp = {
   numCheck: /[0-9]/,
@@ -37,11 +37,11 @@ export default function SignupScreen() {
     e.preventDefault()
     if(e.target.value === ""){
       setNameError("name must be filled");
-    }else if(!new RegExp(nameRegExp).test(e.target.value)){
-      setNameError("name can contain only [a-z]")
     }else if((e.target.value).length<3 || (e.target.value).length>23){
       setNameError("name must be min 3 and max 23 characters")
-    }  else{
+    } else if(!new RegExp(nameRegExp).test(e.target.value)){
+      setNameError("name can contain only [a-z]")
+    } else{
       setName(e.target.value);
       setNameError("")
     }
@@ -134,25 +134,30 @@ if(name!=="" && email!=="" && password!=="" && confirmPassword!==""){
           </div>
           <div className="form-outline mb-4">
             <label className="form-label" for="form3Example3">User Name</label>
-            <input type="name" id="form3Example3" className="form-control form-control-md" onChange={handleNameInput} controlId="name" autoComplete='off'
+            <input type="name" id="form3Example3" 
+            className="form-control form-control-md" 
+            onChange={handleNameInput} controlId="name" autoComplete='off'
               placeholder="Enter name" />
               <h4 style={{color:'red'}}> {nameError} </h4>    
           </div>
           <div className="form-outline mb-4">
             <label className="form-label" for="form3Example3">Email address</label>
-            <input type="email" id="form3Example3" className="form-control form-control-lg" onChange={handleEmailInput} controlId="email" autoComplete='off'
+            <input type="email" id="form3Example3" className="form-control form-control-lg" 
+            onChange={handleEmailInput} controlId="email" autoComplete='off'
               placeholder="Enter email address" />
               <h4 style={{color:'red'}}> {emailError} </h4>    
           </div>
           <div className="form-outline mb-3"> 
           <label className="form-label" for="form3Example4">Password</label>
-            <input type="password" id="form3Example4" className="form-control form-control-lg" onChange={handlePasswordInput} controlId="password"
+            <input type="password" id="form3Example4" className="form-control form-control-lg" 
+            onChange={handlePasswordInput} controlId="password"
               placeholder="Enter password" required/>  
             <h4 style={{color:'red'}}> {passwordError} </h4>
           </div>
           <div className="form-outline mb-4">
             <label className="form-label" for="form3Example3">Confirm Password</label>
-            <input type="password" id="form3Example3" className="form-control form-control-lg" onChange={handleConfirmPasswordInput} controlId="password" autoComplete='off'
+            <input type="password" id="form3Example3" className="form-control form-control-lg"
+             onChange={handleConfirmPasswordInput} controlId="password" autoComplete='off'
               placeholder="Enter password " required />
               <h4 style={{color:'red'}}> {error} </h4>    
           </div>
@@ -193,25 +198,29 @@ if(name!=="" && email!=="" && password!=="" && confirmPassword!==""){
           <h4 style={{color:'red'}}>{message}</h4>
           <div className="form-outline mb-4">
             <label className="form-label" for="form3Example3">User Name</label>
-            <input type="name" id="form3Example3" className="form-control form-control-md" onChange={handleNameInput} controlId="name" autoComplete='off'
+            <input type="name" id="form3Example3" className="form-control form-control-md" 
+            onChange={handleNameInput} controlId="name" autoComplete='off'
               placeholder="Enter name" />
               <h4 style={{color:'red'}}> {nameError} </h4>    
           </div>
           <div className="form-outline mb-4">
             <label className="form-label" for="form3Example3">Email address</label>
-            <input type="email" id="form3Example3" className="form-control form-control-lg" onChange={handleEmailInput} controlId="email" autoComplete='off'
+            <input type="email" id="form3Example3" className="form-control form-control-lg" 
+            onChange={handleEmailInput} controlId="email" autoComplete='off'
               placeholder="Enter email address" />
               <h4 style={{color:'red'}}> {emailError} </h4>    
           </div>
           <div className="form-outline mb-3"> 
           <label className="form-label" for="form3Example4">Password</label>
-            <input type="password" id="form3Example4" className="form-control form-control-lg" onChange={handlePasswordInput} controlId="password"
+            <input type="password" id="form3Example4" className="form-control form-control-lg" 
+            onChange={handlePasswordInput} controlId="password"
               placeholder="Enter password" required/>  
             <h4 style={{color:'red'}}> {passwordError} </h4>
           </div>
           <div className="form-outline mb-4">
             <label className="form-label" for="form3Example3">Confirm Password</label>
-            <input type="password" id="form3Example3" className="form-control form-control-lg" onChange={handleConfirmPasswordInput} controlId="password" autoComplete='off'
+            <input type="password" id="form3Example3" className="form-control form-control-lg" 
+            onChange={handleConfirmPasswordInput} controlId="password" autoComplete='off'
               placeholder="Enter password " required />
               <h4 style={{color:'red'}}> {error} </h4>    
           </div>

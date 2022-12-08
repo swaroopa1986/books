@@ -82,6 +82,11 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
                   </Link>
                   </Nav>
                   <Nav  className="me-auto  w-100  justify-content-end">
+                  <Link to="/contact" className="nav-link">
+                    Contact
+                  </Link>
+                  </Nav>
+                  <Nav  className="me-auto  w-100  justify-content-end">
                   {userInfo ? (
                     <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
                       <LinkContainer to="/profile">
@@ -122,6 +127,9 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
                       </LinkContainer>
                       <LinkContainer to="/admin/users">
                         <NavDropdown.Item>Users</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/admin/contacts">
+                        <NavDropdown.Item>Messages</NavDropdown.Item>
                       </LinkContainer>
                     </NavDropdown>
                   )}

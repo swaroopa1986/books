@@ -7,7 +7,9 @@ const initialState = {
   userInfo: localStorage.getItem('userInfo')
     ? JSON.parse(localStorage.getItem('userInfo'))
     : null,
-
+  contact: localStorage.getItem('contact')
+  ? JSON.parse(localStorage.getItem('contact'))
+    : null,
   cart: {
     shippingAddress: localStorage.getItem('shippingAddress')
       ? JSON.parse(localStorage.getItem('shippingAddress'))
@@ -82,23 +84,15 @@ function reducer(state, action) {
           paymentMethod: '',
         },
       };
+      case 'SAVE_CONTACT_MESSAGE':
+        return { ...state, contact: action.payload };
+
     case 'SAVE_SHIPPING_ADDRESS':
       return {
         ...state,
         cart: {
           ...state.cart,
           shippingAddress: action.payload,
-        },
-      };
-    case 'SAVE_SHIPPING_ADDRESS_MAP_LOCATION':
-      return {
-        ...state,
-        cart: {
-          ...state.cart,
-          shippingAddress: {
-            ...state.cart.shippingAddress,
-            location: action.payload,
-          },
         },
       };
 

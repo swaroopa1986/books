@@ -106,7 +106,7 @@ productRouter.post(
   })
 );
 
-const PAGE_SIZE = 3;
+const PAGE_SIZE = 5;
 
 productRouter.get(
   '/admin',
@@ -201,14 +201,6 @@ productRouter.get(
       page,
       pages: Math.ceil(countProducts / pageSize),
     });
-  })
-);
-
-productRouter.get(
-  '/categories',
-  expressAsyncHandler(async (req, res) => {
-    const categories = await Product.find().distinct('category');
-    res.send(categories);
   })
 );
 
