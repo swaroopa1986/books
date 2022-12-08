@@ -22,13 +22,11 @@ import ProductEditScreen from './screens/ProductEditScreen';
 import OrderListScreen from './screens/OrderListScreen';
 import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen';
-import Contact from './screens/Contact';
 import Header from './components/Header';
 import AboutScreen from './screens/AboutScreen';
 import BookList from './screens/BookList';
 import BookDetails from './screens/BookDetails';
 import FavouriteScreen from './screens/FavouriteScreen';
-import UserMessageScreen from './screens/UserMessageScreen';
 import NotFound from './screens/NotFound'
 
 function App() {
@@ -53,7 +51,6 @@ function App() {
               <ProtectedRoute>
                 <FavouriteScreen />
               </ProtectedRoute>} />
-              <Route path="/contact" element={<ProtectedRoute><Contact /></ProtectedRoute>} />
              <Route
                 path="/profile"
                 element={
@@ -130,14 +127,6 @@ function App() {
                 element={
                   <AdminRoute>
                     <UserEditScreen />
-                  </AdminRoute>
-                }
-              ></Route>
-              <Route
-                path="/admin/contacts"
-                element={
-                  <AdminRoute>
-                    <UserMessageScreen />
                   </AdminRoute>
                 }
               ></Route>
