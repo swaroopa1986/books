@@ -133,7 +133,7 @@ export default function ProfileScreen() {
       </Helmet>
       <h1 className="my-3">User Profile</h1>
       <form onSubmit={submitHandler}>
-        <Form.Group className="mb-3" controlId="name">
+        <Form.Group className="mb-3" controlid="name">
           <Form.Label>Name</Form.Label>
           <Form.Control
             value={name}
@@ -142,7 +142,7 @@ export default function ProfileScreen() {
           />
           <h4 style={{color:'red'}}> {nameError}  </h4>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="name">
+        <Form.Group className="mb-3" controlid="name">
           <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
@@ -152,7 +152,7 @@ export default function ProfileScreen() {
           />
             <h4 style={{color:'red'}}> {emailError} </h4>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="password">
+        <Form.Group className="mb-3" controlid="password">
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
@@ -160,7 +160,7 @@ export default function ProfileScreen() {
           />
            <h4 style={{color:'red'}}> {passwordError} </h4>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="password">
+        <Form.Group className="mb-3" controlid="password">
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             type="password"

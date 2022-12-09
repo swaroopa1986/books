@@ -133,31 +133,31 @@ if(name!=="" && email!=="" && password!=="" && confirmPassword!==""){
             <h2 className="text-center fw-bold mx-3 mb-0">SignUp Form</h2>
           </div>
           <div className="form-outline mb-4">
-            <label className="form-label" for="form3Example3">User Name</label>
+            <label className="form-label" htmlFor="form3Example3">User Name</label>
             <input type="name" id="form3Example3" 
             className="form-control form-control-md" 
-            onChange={handleNameInput} controlId="name" autoComplete='off'
+            onChange={handleNameInput} controlid="name" autoComplete='off'
               placeholder="Enter name" />
               <h4 style={{color:'red'}}> {nameError} </h4>    
           </div>
           <div className="form-outline mb-4">
-            <label className="form-label" for="form3Example3">Email address</label>
+            <label className="form-label" htmlFor="form3Example3">Email address</label>
             <input type="email" id="form3Example3" className="form-control form-control-lg" 
-            onChange={handleEmailInput} controlId="email" autoComplete='off'
+            onChange={handleEmailInput} controlid="email" autoComplete='off'
               placeholder="Enter email address" />
               <h4 style={{color:'red'}}> {emailError} </h4>    
           </div>
           <div className="form-outline mb-3"> 
-          <label className="form-label" for="form3Example4">Password</label>
+          <label className="form-label" htmlFor="form3Example4">Password</label>
             <input type="password" id="form3Example4" className="form-control form-control-lg" 
-            onChange={handlePasswordInput} controlId="password"
+            onChange={handlePasswordInput} controlid="password"
               placeholder="Enter password" required/>  
             <h4 style={{color:'red'}}> {passwordError} </h4>
           </div>
           <div className="form-outline mb-4">
-            <label className="form-label" for="form3Example3">Confirm Password</label>
+            <label className="form-label" htmlFor="form3Example3">Confirm Password</label>
             <input type="password" id="form3Example3" className="form-control form-control-lg"
-             onChange={handleConfirmPasswordInput} controlId="password" autoComplete='off'
+             onChange={handleConfirmPasswordInput} controlid="password" autoComplete='off'
               placeholder="Enter password " required />
               <h4 style={{color:'red'}}> {error} </h4>    
           </div>
@@ -165,7 +165,7 @@ if(name!=="" && email!=="" && password!=="" && confirmPassword!==""){
             <button type="button" className="btn btn-primary btn-lg" onClick={submitHandler}
               style={{paddingLeft: '2.5rem', paddingRight: '2.5rem'}}>Register</button>
             <div class="form-check d-flex justify-content-center mb-5">
-<label class="form-check-label" for="form2Example3">
+<label class="form-check-label" htmlFor="form2Example3">
   Already Have an account {''} <Link to={`/signin?redirect=${redirect}`}>Sign-In</Link>
 </label>
 </div>
@@ -197,30 +197,30 @@ if(name!=="" && email!=="" && password!=="" && confirmPassword!==""){
           </div>
           <h4 style={{color:'red'}}>{message}</h4>
           <div className="form-outline mb-4">
-            <label className="form-label" for="form3Example3">User Name</label>
+            <label className="form-label" htmlFor="form3Example3">User Name</label>
             <input type="name" id="form3Example3" className="form-control form-control-md" 
-            onChange={handleNameInput} controlId="name" autoComplete='off'
+            onChange={handleNameInput} controlid="name" autoComplete='off'
               placeholder="Enter name" />
               <h4 style={{color:'red'}}> {nameError} </h4>    
           </div>
           <div className="form-outline mb-4">
-            <label className="form-label" for="form3Example3">Email address</label>
+            <label className="form-label" htmlFor="form3Example3">Email address</label>
             <input type="email" id="form3Example3" className="form-control form-control-lg" 
-            onChange={handleEmailInput} controlId="email" autoComplete='off'
+            onChange={handleEmailInput} controlid="email" autoComplete='off'
               placeholder="Enter email address" />
               <h4 style={{color:'red'}}> {emailError} </h4>    
           </div>
           <div className="form-outline mb-3"> 
-          <label className="form-label" for="form3Example4">Password</label>
+          <label className="form-label" htmlFor="form3Example4">Password</label>
             <input type="password" id="form3Example4" className="form-control form-control-lg" 
-            onChange={handlePasswordInput} controlId="password"
+            onChange={handlePasswordInput} controlid="password"
               placeholder="Enter password" required/>  
             <h4 style={{color:'red'}}> {passwordError} </h4>
           </div>
           <div className="form-outline mb-4">
-            <label className="form-label" for="form3Example3">Confirm Password</label>
+            <label className="form-label" htmlFor="form3Example3">Confirm Password</label>
             <input type="password" id="form3Example3" className="form-control form-control-lg" 
-            onChange={handleConfirmPasswordInput} controlId="password" autoComplete='off'
+            onChange={handleConfirmPasswordInput} controlid="password" autoComplete='off'
               placeholder="Enter password " required />
               <h4 style={{color:'red'}}> {error} </h4>    
           </div>
@@ -228,7 +228,7 @@ if(name!=="" && email!=="" && password!=="" && confirmPassword!==""){
             <button type="button" className="btn btn-primary btn-lg" onClick={errorHandler}
               style={{paddingLeft: '2.5rem', paddingRight: '2.5rem'}}>Register</button>
             <div class="form-check d-flex justify-content-center mb-5">
-<label class="form-check-label" for="form2Example3">
+<label class="form-check-label" htmlFor="form2Example3">
   Already Have an account {''} <Link to={`/signin?redirect=${redirect}`}>Sign-In</Link>
 </label>
 </div>

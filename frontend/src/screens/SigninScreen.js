@@ -101,20 +101,20 @@ function handlePasswordInput(e){
             <h2 className="text-center fw-bold mx-3 mb-0">Login Form</h2>
           </div>
           <div className="form-outline mb-4">
-            <label className="form-label" for="form3Example3">Email address</label>
+            <label className="form-label" htmlFor="form3Example3">Email address</label>
             <input type="email" id="form3Example3" 
             className="form-control form-control-lg" 
-            onChange={handleEmailInput} controlId="email"
+            onChange={handleEmailInput} controlid="email"
               placeholder="Enter email address" autoComplete='off' />
               <h4 style={{color:'red'}}> {emailError} </h4>
               {error && email<=0? 
               <label style={{color:'red'}}>Email can't be empty</label> : "" }
           </div>
           <div className="form-outline mb-3"> 
-          <label className="form-label" for="form3Example4">Password</label>
+          <label className="form-label" htmlFor="form3Example4">Password</label>
             <input type="password" id="form3Example4" 
             className="form-control form-control-lg" 
-            onChange={handlePasswordInput} controlId="password"
+            onChange={handlePasswordInput} controlid="password"
               placeholder="Enter password" />
               <h4 style={{color:'red'}}> {passwordError} </h4>
               {error && password<=0? 

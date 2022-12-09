@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
@@ -137,7 +137,7 @@ function App() {
         </main>
         <footer fixed = "bottom">
           <div className="text-center">All rights reserved</div>
-          <div> @COPY NCI</div>
+          <div className="text-center"> @COPY NCI</div>
         </footer>
       </div>
     </Router>
